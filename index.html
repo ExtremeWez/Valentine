@@ -83,12 +83,22 @@
             50% { transform: scale(1); }
         }
 
-        #credit { position: fixed; bottom: 20px; right: 20px; color: var(--pink); opacity: 0.5; font-weight: bold; }
-    </style>
-</head>
-<body>
+        #credit {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+    font-weight: bold;
+    color: #ff4d6d;
+    z-index: 100;
+    line-height: 1.4;
+    pointer-events: none; /* This ensures the 'No' button logic doesn't get stuck if it jumps near your text */
+}
 
-    <div id="credit">Made by Wez</div>
+    <div id="credit">
+    Made by Wez<br>
+    <span style="font-size: 14px; font-weight: normal; opacity: 0.8;">Discord: @yourusername</span>
+</div>
     <div class="heart-bg" id="heart-container"></div>
 
     <div class="page active" id="page1">
@@ -185,4 +195,5 @@
         }, 400);
     </script>
 </body>
+
 </html>
