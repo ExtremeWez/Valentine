@@ -58,7 +58,7 @@
 
         #yesBtn { background: var(--pink); color: white; }
         #yesBtn:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4); }
-        #noBtn { background: #eee; color: #777; position: relative; }
+        #noBtn { background: #eee; color: #777; position: relative; z-index: 1000; }
 
         /* Typing Effect Page */
         .typewriter {
@@ -69,6 +69,18 @@
             white-space: pre-wrap;
             overflow: hidden;
             display: inline-block;
+        }
+
+        #credit {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            text-align: right;
+            font-weight: bold;
+            color: #ff4d6d;
+            z-index: 100;
+            line-height: 1.4;
+            pointer-events: none;
         }
 
         /* Animations */
@@ -82,23 +94,15 @@
             25% { transform: scale(1.1); }
             50% { transform: scale(1); }
         }
-
-        #credit {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    text-align: right;
-    font-weight: bold;
-    color: #ff4d6d;
-    z-index: 100;
-    line-height: 1.4;
-    pointer-events: none; /* This ensures the 'No' button logic doesn't get stuck if it jumps near your text */
-}
+    </style>
+</head>
+<body>
 
     <div id="credit">
-    Made by Wez<br>
-    <span style="font-size: 14px; font-weight: normal; opacity: 0.8;">Discord: @yourusername</span>
-</div>
+        Made by Wez<br>
+        <span style="font-size: 14px; font-weight: normal; opacity: 0.8;">Discord: @yourusername</span>
+    </div>
+
     <div class="heart-bg" id="heart-container"></div>
 
     <div class="page active" id="page1">
@@ -108,7 +112,7 @@
         <h1 style="font-size: 3rem;">Do you love me?</h1>
         <div class="btn-wrapper">
             <button id="yesBtn" onclick="nextPage(2)">Yes! ✨</button>
-            <button id="noBtn" onmouseover="moveButton()">No</button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
         </div>
     </div>
 
@@ -140,6 +144,7 @@
             const noBtn = document.getElementById('noBtn');
             noBtn.style.position = 'fixed';
             const padding = 100;
+            // Ensure button stays within visible screen bounds
             const newX = Math.random() * (window.innerWidth - noBtn.offsetWidth - padding) + padding/2;
             const newY = Math.random() * (window.innerHeight - noBtn.offsetHeight - padding) + padding/2;
             noBtn.style.left = newX + 'px';
@@ -195,5 +200,4 @@
         }, 400);
     </script>
 </body>
-
 </html>
